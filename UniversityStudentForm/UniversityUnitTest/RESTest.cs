@@ -2,6 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PinnacleUniversity.REST;
 using PinnacleUniversity.DataModels;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PinnacleUniversity.Services;
 
 namespace UniversityUnitTest
 {
@@ -38,6 +41,40 @@ namespace UniversityUnitTest
             var validate = client.ValidateAutoDrop();
             Assert.AreNotEqual(null, validate);
 
+        }
+
+        [TestMethod]
+        public void StudentOverviewETL()
+        {
+            UniversityStudentService service = new UniversityStudentService();
+            service.Initialize();
+        }
+
+        [TestMethod()]
+        public void GetAllStudentsFromDBTest()
+        {
+            UniversityStudentService service = new UniversityStudentService();
+            service.Initialize();
+            var result = service.GetAllStudentsFromDB();
+            Assert.AreNotEqual(null, result);
+        }
+
+        private StudentOverview RebuildStudentDetailsFromCourseRegistry(StudentDetails s)
+        {
+            UniversityClient client = new UniversityClient();
+            s.Courses = new List<EnrolledCourse>();
+            var courses = client.GetAllCourses();
+            foreach(CourseRoot c in courses)
+            {
+                var course = client.GetCourse(c.Id);
+                var student = course.EnrolledStudents.Find(x => x.Id == s.Id);
+                if (student != null)
+                {
+                    s.Courses.Add(new EnrolledCourse(course, student.Status, student.Grade, student.Id));
+                }
+            }
+
+            return new StudentOverview(s);
         }
     }
 }

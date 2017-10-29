@@ -1,12 +1,7 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PinnacleUniversity.DataModels;
-using PinnacleUniversity.DataModels.Courses;
-using PinnacleUniversity.DataModels.Students;
 
 namespace PinnacleUniversity.REST
 {
@@ -18,7 +13,7 @@ namespace PinnacleUniversity.REST
         public const string STUDENT_DETAIL = STUDENT + "{0}";
         public const string COURSE = "Course/";
         public const string COURSE_DETAIL = COURSE + "{0}";
-        public const string DROP_COURSE = COURSE_DETAIL + "/" + STUDENT + "{1}";
+        public const string DROP_COURSE = COURSE_DETAIL + "/Drop/{1}";
         public const string VALIDATE = "Validate";
         public const string RESET = "Reset";
         #endregion
@@ -152,7 +147,7 @@ namespace PinnacleUniversity.REST
             catch (Exception e)
             {
                 //TODO Handle this.
-                return new ErrorResponse();
+                return new ErrorResponse(e.Message);
             }
         }
 

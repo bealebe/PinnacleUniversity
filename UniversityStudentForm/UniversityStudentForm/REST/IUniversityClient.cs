@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using PinnacleUniversity.DataModels;
-using PinnacleUniversity.DataModels.Courses;
-using PinnacleUniversity.DataModels.Students;
 
 namespace PinnacleUniversity.REST
 {

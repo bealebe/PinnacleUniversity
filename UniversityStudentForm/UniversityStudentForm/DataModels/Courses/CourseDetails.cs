@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PinnacleUniversity.DataModels.Courses
+namespace PinnacleUniversity.DataModels
 {
     public class CourseDetails : CourseRoot
     { 
