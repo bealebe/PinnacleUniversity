@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace PinnacleUniversity.DataModels
 {
+    /// <summary>
+    /// This is the class for creating an Entity Framework Database through code-first
+    /// </summary>
     public class UniversityContext : DbContext
     {
-
         public UniversityContext()
         {
+            //Set initializer to drop and recreate DB because we are resetting the API each time anyway.
             Database.SetInitializer(new DropCreateDatabaseAlways<UniversityContext>());
         }
 
@@ -20,7 +18,7 @@ namespace PinnacleUniversity.DataModels
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // configures one-to-many relationship
+            // configures many-to-many relationship
             modelBuilder.Entity<StudentOverview>()
                 .HasMany<EnrolledCourse>(s => s.Courses)
                 .WithMany(c => c.Students)
@@ -29,7 +27,7 @@ namespace PinnacleUniversity.DataModels
                         cs.MapLeftKey("StudentId");
                         cs.MapRightKey("CourseId");
                         cs.ToTable("StudentCourses");
-                    });            
+                    });
         }
     }
 }

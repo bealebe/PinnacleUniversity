@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace PinnacleUniversity.DataModels
 {
+    /// <summary>
+    /// This class is to hold the details from the API Course JSON object
+    /// </summary>
     public class StudentDetails : StudentRoot
     {
         [Browsable(false)]

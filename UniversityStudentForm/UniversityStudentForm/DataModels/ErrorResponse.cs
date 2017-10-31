@@ -1,18 +1,16 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PinnacleUniversity.DataModels
 {
+    /// <summary>
+    /// Object to hold the error message that would come back from a request
+    /// </summary>
     public class ErrorResponse
     {
-
         public ErrorResponse()
         {
         }
+
         public ErrorResponse(string message)
         {
             Message = message;

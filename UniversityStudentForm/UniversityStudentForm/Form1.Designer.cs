@@ -44,17 +44,20 @@
             this.dgvStudentsOverview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStudentsOverview.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvStudentsOverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudentsOverview.Location = new System.Drawing.Point(12, 42);
+            this.dgvStudentsOverview.Location = new System.Drawing.Point(12, 12);
+            this.dgvStudentsOverview.MultiSelect = false;
             this.dgvStudentsOverview.Name = "dgvStudentsOverview";
+            this.dgvStudentsOverview.ReadOnly = true;
             this.dgvStudentsOverview.RowHeadersVisible = false;
             this.dgvStudentsOverview.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvStudentsOverview.Size = new System.Drawing.Size(738, 344);
+            this.dgvStudentsOverview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStudentsOverview.Size = new System.Drawing.Size(1221, 497);
             this.dgvStudentsOverview.TabIndex = 0;
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(674, 396);
+            this.btnClose.Location = new System.Drawing.Point(1157, 519);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -64,8 +67,8 @@
             // 
             // btnAutoDrop
             // 
-            this.btnAutoDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAutoDrop.Location = new System.Drawing.Point(639, 12);
+            this.btnAutoDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAutoDrop.Location = new System.Drawing.Point(1041, 519);
             this.btnAutoDrop.Name = "btnAutoDrop";
             this.btnAutoDrop.Size = new System.Drawing.Size(110, 23);
             this.btnAutoDrop.TabIndex = 4;
@@ -75,8 +78,8 @@
             // 
             // progressBar
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(239, 206);
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.progressBar.Location = new System.Drawing.Point(12, 515);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(264, 34);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -85,10 +88,10 @@
             // 
             // lblProgress
             // 
-            this.lblProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProgress.AutoSize = true;
             this.lblProgress.BackColor = System.Drawing.Color.Transparent;
-            this.lblProgress.Location = new System.Drawing.Point(344, 216);
+            this.lblProgress.Location = new System.Drawing.Point(282, 527);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(54, 13);
             this.lblProgress.TabIndex = 6;
@@ -96,9 +99,10 @@
             // 
             // frmUniversityStudents
             // 
+            this.AcceptButton = this.btnAutoDrop;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 431);
+            this.ClientSize = new System.Drawing.Size(1245, 554);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnAutoDrop);

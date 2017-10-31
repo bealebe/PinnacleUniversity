@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PinnacleUniversity.DataModels
 {
+    /// <summary>
+    /// This is to hold the details of the student for a course.
+    /// </summary>
     public class EnrolledStudent : StudentRoot
     {
         public const string ENROLLED = "Enrolled";
@@ -14,6 +12,7 @@ namespace PinnacleUniversity.DataModels
 
         [JsonProperty("grade")]
         public double Grade { get; set; }
+
         [JsonProperty("status")]
         public string Status { get; set; }
     }
