@@ -79,6 +79,7 @@
     <Compile Include="REST\IUniversityClient.cs" />
     <Compile Include="REST\UniversityClient.cs" />
     <Compile Include="Services\IUniversityStudentService.cs" />
+    <Compile Include="Services\NetworkMonitor.cs" />
     <Compile Include="Services\UniversityStudentService.cs" />
     <Compile Include="ViewModels\UniversityStudentsViewModel.cs" />
     <EmbeddedResource Include="Form1.resx">

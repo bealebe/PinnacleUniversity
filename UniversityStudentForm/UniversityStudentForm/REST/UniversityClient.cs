@@ -45,6 +45,7 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public List<CourseRoot> GetAllCourses()
         {
+            CheckNetwork();
             var request = new RestRequest(COURSE, Method.GET) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<List<CourseRoot>>(request);
             VerifyGoodResponse(response);
@@ -58,6 +59,8 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public List<StudentRoot> GetAllStudents()
         {
+            CheckNetwork();
+
             var request = new RestRequest(STUDENT, Method.GET) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<List<StudentRoot>>(request);
             VerifyGoodResponse(response);
@@ -72,6 +75,8 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public CourseDetails GetCourse(int pId)
         {
+            CheckNetwork();
+
             var request = new RestRequest(string.Format(COURSE_DETAIL, pId), Method.GET) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<CourseDetails>(request);
             VerifyGoodResponse(response);
@@ -86,6 +91,8 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public StudentDetails GetStudent(int pId)
         {
+            CheckNetwork();
+
             var request = new RestRequest(string.Format(STUDENT_DETAIL, pId), Method.GET) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<StudentDetails>(request);
             VerifyGoodResponse(response);
@@ -99,6 +106,8 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public ErrorResponse ValidateAutoDrop()
         {
+            CheckNetwork();
+
             var request = new RestRequest(VALIDATE, Method.GET) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<ErrorResponse>(request);
             VerifyGoodResponse(response);
@@ -118,6 +127,8 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public ErrorResponse DropStudentFromCourse(int pCourseId, int pStudentId)
         {
+            CheckNetwork();
+
             var request = new RestRequest(string.Format(DROP_COURSE, pCourseId, pStudentId), Method.POST) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<ErrorResponse>(request);
             VerifyGoodResponse(response);
@@ -131,6 +142,8 @@ namespace PinnacleUniversity.REST
         /// <returns></returns>
         public ErrorResponse ResetAPIData()
         {
+            CheckNetwork();
+
             var request = new RestRequest(RESET, Method.POST) { RequestFormat = DataFormat.Json };
             var response = _Client.Execute<ErrorResponse>(request);
             VerifyGoodResponse(response);
@@ -159,6 +172,17 @@ namespace PinnacleUniversity.REST
                     dynamic e = JObject.Parse(response.Content);
                     throw new IOException(e.message.Value as string);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if there is an active internet connection
+        /// </summary>
+        private void CheckNetwork()
+        {
+            if (!NetworkMonitor.CanPingOutsideNetwork())
+            {
+                throw new Exception("No Active Internet Connection");
             }
         }
 
